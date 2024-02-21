@@ -29,4 +29,22 @@ app.get("/item/:id", function (req, res) {
   res.send(item);
 });
 
+// Sinalizamos que o corpo da requisicao sera um JSON
+app.use(express.json());
+
+// Create -> [POST] /item
+app.post("/item", function (req, res) {
+  // Extraindo o corpo da requisicao
+  const body = req.body;
+
+  // Acessando o nome do item no corpo da requisicao
+  const item = body.nome;
+
+  // Adicionando o item na lista
+  lista.push(item);
+
+  // Enviando resposta de sucesso
+  res.send("Item adicionado com sucesso");
+});
+
 app.listen(3000);
