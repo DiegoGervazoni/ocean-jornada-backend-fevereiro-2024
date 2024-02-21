@@ -5,4 +5,5 @@ Projeto criado com NodeJs e Express feito para a Jornada Backend do Samsung Ocea
 - Projeto NodeJS criado;
 - Express instalado;
 - Criação de Endpoint;
-
+- Nodemon instalado;
+- Scripts adicionados;
