@@ -10,3 +10,4 @@ Projeto criado com NodeJs e Express feito para a Jornada Backend do Samsung Ocea
 - Endpoint [GET] /item criado;
 - Endpoint [GET] /item/:id criado;
 - Endpoint [POST] /item criado;
+- Conexão com MongoDB realizada;
