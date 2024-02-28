@@ -3,7 +3,7 @@ const { MongoClient, ObjectId } = require("mongodb");
 
 const dbUrl =
   "mongodb+srv://admin:Rx1x1RUAbGiZZhhG@cluster0.kra5yqd.mongodb.net";
-const dbName = "OceanJornadaBackendFev2024";
+const dbName = "Ocean-Jornada-Backend-Fev-2024";
 
 async function main() {
   const client = new MongoClient(dbUrl);
