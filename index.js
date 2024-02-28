@@ -1,8 +1,8 @@
+require("dotenv").config();
 const express = require("express");
 const { MongoClient, ObjectId } = require("mongodb");
 
-const dbUrl =
-  "mongodb+srv://admin:Rx1x1RUAbGiZZhhG@cluster0.kra5yqd.mongodb.net";
+const dbUrl = process.env.DATABASE_URL;
 const dbName = "Ocean-Jornada-Backend-Fev-2024";
 
 async function main() {
@@ -64,6 +64,35 @@ async function main() {
 
     // Enviando resposta de sucesso
     res.send(item);
+  });
+
+  // Update -> [PUT] /item/:id
+  app.put("/item/:id", async function (req, res) {
+    // Pegamos o ID recebido pela rota
+    const id = req.params.id;
+
+    // Pegamos o novo item do corpo da requisição
+    const novoItem = req.body; // Novo item que será atualizado
+
+    // Atualizamos o documento na collection com base no ID
+    await colletcion.updateOne(
+      { _id: new ObjectId(id) }, // Filtro para encontrar o documento a ser atualizado
+      { $set: novoItem } // Novos valores para o documento encontrado
+    );
+
+    res.send("Item atualizado com sucesso!");
+  });
+
+  // Delete -> [DELETE] /item/:id
+  app.delete("/item/:id", async function (req, res) {
+    // Pegamos o ID da rota
+    const id = req.params.id;
+
+    // Realizamos a operacao de deleteOne
+    await colletcion.deleteOne({ _id: new ObjectId(id) });
+
+    // Enviando resposta de sucesso
+    res.send("Item deletado com sucesso!");
   });
 
   app.listen(3000);
