@@ -44,8 +44,7 @@ async function main() {
 
     // Acesso item na collection baseada no ID recebido
     const item = await colletcion.findOne({
-      _id: new ObjectId(id
-        )
+      _id: new ObjectId(id),
     });
 
     // Envio do item recebido com resposta HTTP
@@ -56,18 +55,15 @@ async function main() {
   app.use(express.json());
 
   // Create -> [POST] /item
-  app.post("/item", function (req, res) {
+  app.post("/item", async function (req, res) {
     // Extraindo o corpo da requisicao
-    const body = req.body;
-
-    // Acessando o nome do item no corpo da requisicao
-    const item = body.nome;
+    const item = req.body;
 
     // Adicionando o item na lista
-    lista.push(item);
+    await colletcion.insertOne(item);
 
     // Enviando resposta de sucesso
-    res.send("Item adicionado com sucesso");
+    res.send(item);
   });
 
   app.listen(3000);

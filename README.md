@@ -13,4 +13,4 @@ Projeto criado com NodeJs e Express feito para a Jornada Backend do Samsung Ocea
 - Conexão com MongoDB realizada;
 - Endpoint Read All conectado com MongoDB;
 - Banco de dados implementado no Endpoint Read By ID;
-
+- Banco de dados implementado no Endpoint Create;
